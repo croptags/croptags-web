@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-export default function TreeDetail() {
+export const TreeDetail = () => {
   const { id } = useParams();
 
   return (
@@ -8,4 +8,4 @@ export default function TreeDetail() {
       <h1>Tree ID: {id}</h1>
     </div>
   );
-}
+};

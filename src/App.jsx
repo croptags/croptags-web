@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "@/pages/Landing";
-import TreeDetail from "@/pages/TreeDetail";
+import { Landing } from "@/pages/landing/Landing";
+import { TreeDetail } from "@/pages/tree-detail/TreeDetail";
 
 function App() {
   return (
