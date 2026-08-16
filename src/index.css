@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+@theme {
+  --color-background: #f4f5fa;
+  --color-foreground: #1c2024;
+
+  --color-primary: #00804d;
+  --color-primary-foreground: #f4f5fa;
+
+  --color-secondary: #f1ff62;
+  --color-secondary-foreground: #00804d;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", sans-serif;
+  }
+
+  .font-serif {
+    font-family: "Playfair Display", serif;
+  }
+}
