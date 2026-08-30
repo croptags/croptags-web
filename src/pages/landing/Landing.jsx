@@ -1,4 +1,4 @@
-import { Navbar } from "@/pages/landing/component/Navbar";
+import { Navbar } from "@/pages/landing/components/Navbar";
 import { Hero } from "@/pages/landing/sections/Hero";
 
 export const Landing = () => {
