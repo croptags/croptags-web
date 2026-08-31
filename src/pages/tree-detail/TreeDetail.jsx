@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import dummyData from "@/data/dummy.json";
 import { TreeInfoCard } from "@/pages/tree-detail/components/TreeInfoCard";
 import { Star } from "lucide-react";
 
 const fetchTreeData = async (treeId) => {
-  return dummyData;
-
-  // When Api Ready
-  // const res = await fetch(`https://api.croptags.com/trees/${treeId}`);
-  // if (!res.ok) throw new Error("Tree not found");
-  // return await res.json();
+  const res = await fetch(
+    `https://croptags-prod.up.railway.app/api/v1/trees/${treeId}`,
+  );
+  if (!res.ok) throw new Error("Tree not found");
+  return await res.json();
 };
 
 export const TreeDetail = () => {
