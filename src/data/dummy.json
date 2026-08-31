@@ -12,10 +12,10 @@
     "code": "D197",
     "description": "Known as Raja Kunyit, renowned for its rich golden-yellow flesh, buttery custard texture, and a complex sweet-bitter aftertaste.",
     "taste_profile": {
-      "sweet": 8,
-      "bitter": 7,
-      "creaminess": 9,
-      "aroma": 9,
+      "sweet": 4,
+      "bitter": 5,
+      "creaminess": 4,
+      "aroma": 4,
       "color": "Deep Golden Yellow"
     }
   },
