@@ -88,18 +88,32 @@ export const TreeDetail = () => {
               {tasteProfile.map(([label, value]) => (
                 <div key={label} className="flex">
                   <div className="w-24 text-[#788D98]">{label}</div>
+
                   <div className="flex gap-3">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star
-                        key={star}
-                        size={24}
-                        className={
-                          star <= value
-                            ? "fill-[#FB923C] text-[#FB923C]"
-                            : "text-[#FB923C]"
-                        }
-                      />
-                    ))}
+                    {[1, 2, 3, 4, 5].map((star) => {
+                      const fillPercentage = Math.min(
+                        Math.max((value - (star - 1)) * 100, 0),
+                        100,
+                      );
+
+                      return (
+                        <div key={star} className="relative">
+                          {/* Empty star */}
+                          <Star size={24} className="text-[#FB923C]" />
+
+                          {/* Filled portion */}
+                          <div
+                            className="absolute inset-0 overflow-hidden"
+                            style={{ width: `${fillPercentage}%` }}
+                          >
+                            <Star
+                              size={24}
+                              className="fill-[#FB923C] text-[#FB923C]"
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
