@@ -1,14 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f4f5fa;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-background: #f4f6f7;
   --color-foreground: #1c2024;
+  --color-brand: #00804d;
+  --color-brand-secondary: #00804d;
+  --color-text-primary: #1c2024;
+  --color-text-on-brand: #ffffff;
+  --color-text-secondary: #788d98;
+  --color-border-default: #e3e8ea;
+  --color-success-solid: #00ca6d;
+  --color-success-text: #00804d;
+  --color-success-border: #00f288;
+  --color-success-bg: #ecfff7;
+  --color-surface-subtle: #f4f6f7;
+}
 
-  --color-primary: #00804d;
-  --color-primary-foreground: #f4f5fa;
+@utility heading-h5-medium {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: -0.15px;
+}
 
-  --color-secondary: #f1ff62;
-  --color-secondary-foreground: #00804d;
+@utility heading-h4-medium {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 38px;
+  letter-spacing: -0.2px;
+}
+
+@utility heading-h2-medium {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 58px;
+  letter-spacing: -0.4px;
+}
+
+/* @utility heading-h2-medium {
+} */
+
+@utility heading-h5-bold {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: -0.15px;
+}
+
+@utility heading-h6-bold {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+@utility body-2-regular {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+@utility body-2-medium {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+@utility body-3-regular {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+@utility body-3-medium {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+@utility body-4-regular {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0;
+}
+
+@utility label-1-regular {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.18px;
+}
+
+@utility label-1-medium {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.18px;
+}
+
+@utility label-2-regular {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.16px;
+}
+
+@utility label-2-medium {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.16px;
 }
 
 @layer base {
@@ -19,7 +127,8 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: "Inter", sans-serif;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
 
   .font-serif {
