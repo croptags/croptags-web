@@ -22,7 +22,7 @@ function LocationPanel({ tree, t, locale }) {
   );
 
   const embedUrl = hasCoordinates
-    ? `https://maps.google.com/maps?q=${Number(location.latitude)},${Number(location.longitude)}&z=15&output=embed`
+    ? `https://maps.google.com/maps?q=${Number(location.latitude)},${Number(location.longitude)}&z=14&output=embed`
     : null;
 
   return (
