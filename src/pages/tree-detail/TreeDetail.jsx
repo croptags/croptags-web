@@ -15,7 +15,7 @@ import { CareRecords } from "@/pages/tree-detail/components/CareRecords";
 import { HarvestRecords } from "@/pages/tree-detail/components/HarvestRecords";
 import { LanguagePicker } from "@/pages/tree-detail/components/LanguagePicker";
 import { useI18n } from "@/i18n/useI18n";
-import detailBanner from "@/assets/tree-detail/durian-detail-banner.png";
+import detailBanner from "@/assets/tree-detail/durian-detail-banner.webp";
 
 async function fetchTreeData(treeId, signal) {
   const response = await fetch(
