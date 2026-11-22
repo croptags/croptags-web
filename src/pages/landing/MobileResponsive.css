@@ -1,0 +1,330 @@
+/* Shared phone layout rules. Content grows vertically as text wraps. */
+.landing-page { min-width: 0; }
+@media (max-width: 700px) {
+  .landing-page { --phone-gutter: clamp(16px, 6.6667vw, 32px); }
+  .landing-page main, .landing-page section,
+  .landing-page article, .landing-page form { min-width: 0; }
+  .landing-page h1, .landing-page h2, .landing-page h3,
+  .landing-page p, .landing-page label { overflow-wrap: break-word; }
+
+  .landing-page .landing-hero { height: auto; min-height: max(640px, 100svh); max-height: none; }
+  .landing-page .landing-hero__content {
+    width: calc(100% - var(--phone-gutter) * 2);
+    max-width: 480px;
+    height: auto;
+    min-height: inherit;
+    padding: 128px 0 max(64px, env(safe-area-inset-bottom, 0px));
+  }
+  .landing-page .landing-hero p { max-width: 440px; }
+  .landing-page .landing-nav { width: calc(100% - var(--phone-gutter) * 2); }
+  .landing-page .landing-nav__mobile-links {
+    max-height: max(120px, calc(100svh - 116px));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .landing-page .problem-reveal__stage { padding-inline: var(--phone-gutter); }
+  .landing-page .problem-reveal__content { width: 100%; max-width: 480px; }
+  .landing-page .problem-reveal__description {
+    max-width: none;
+    white-space: normal;
+    text-wrap: pretty;
+  }
+  .landing-page .problem-reveal__cards { width: 100%; max-width: 360px; margin-inline: auto; }
+  .landing-page .problem-reveal__card { width: min(190px, 75%); }
+
+  .landing-page .three-steps__stage { padding-inline: var(--phone-gutter); }
+  .landing-page .three-steps__inner { width: 100%; max-width: 400px; }
+  .landing-page .three-steps__intro { width: min(100%, 360px); margin-inline: auto; }
+  .landing-page .three-steps__process-scroll { height: auto; }
+  .landing-page .three-steps__process { position: relative; top: 0; min-height: 0; height: auto; }
+  .landing-page .three-steps__heading { margin-inline: auto; }
+  .landing-page .three-steps__step-content { min-width: 0; }
+
+  .landing-page .features { padding-inline: var(--phone-gutter); }
+  .landing-page .features__panel { width: 100%; min-width: 0; }
+  .landing-page .features__grid { grid-template-columns: minmax(0, 1fr); }
+  .landing-page .features__animation, .landing-page .features__arena { min-width: 0; }
+  .landing-page .features__pill { width: min(200px, 100%); }
+  .landing-page .features__pill--soil,
+  .landing-page .features__pill--disease { width: max-content; max-width: 100%; }
+
+  .landing-page .benefits { padding-inline: var(--phone-gutter); }
+  .landing-page .benefits__tabs { flex-wrap: wrap; }
+  .landing-page .benefits__points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .landing-page .benefits__points > div { min-width: 0; }
+
+  .landing-page .comparison-section { padding-inline: var(--phone-gutter); }
+  .landing-page .comparison-section__title { font-size: 32px; line-height: 38px; letter-spacing: -0.2px; }
+  .landing-page .comparison-section__head > div { min-width: 0; }
+  .landing-page .comparison-section__row span { overflow-wrap: anywhere; }
+
+  .landing-page .sample-kit { padding-inline: var(--phone-gutter); }
+  .landing-page .sample-kit__card { min-width: 0; padding-inline: 24px; }
+  .landing-page .sample-kit__intro, .landing-page .sample-kit__form { width: 100%; min-width: 0; }
+  .landing-page .sample-kit__title { font-size: 32px; line-height: 38px; letter-spacing: -0.2px; }
+  .landing-page .sample-kit__description { font-size: 16px; line-height: 24px; }
+  .landing-page .sample-kit__form input { min-width: 0; max-width: 100%; min-height: 44px; height: auto; font-size: 16px; line-height: 24px; }
+  .landing-page .sample-kit__form button { width: 100%; max-width: none; }
+
+  .landing-page .landing-footer { padding-inline: var(--phone-gutter); padding-bottom: max(24px, env(safe-area-inset-bottom, 0px)); }
+  .landing-page .landing-footer__logo img { max-width: 100%; }
+}
+/* Preserve the original 360px Figma composition, while letting other widths reflow. */
+@media (min-width: 356px) and (max-width: 364px) {
+  .landing-page .problem-reveal__description { white-space: pre-line; text-wrap: wrap; }
+  .landing-page .three-steps__inner { max-width: 280px; }
+}
+@media (max-width: 359px) {
+  .landing-page .landing-hero h1,
+  .landing-page .problem-reveal__title,
+  .landing-page .three-steps__intro h2,
+  .landing-page .features__title,
+  .landing-page .benefits__heading,
+  .landing-page .comparison-section__title,
+  .landing-page .sample-kit__title { font-size: clamp(28px, 8.8889vw, 32px); line-height: 1.1875; }
+  .landing-page .features__pill { padding-inline: 16px; }
+  .landing-page .comparison-section__head,
+  .landing-page .comparison-section__row { gap: 12px; }
+}
+@media (max-width: 1000px) and (max-height: 500px) {
+  .landing-page .landing-hero { min-height: 480px; height: auto; }
+  .landing-page .landing-hero__content { min-height: 480px; height: auto; padding-top: 120px; padding-bottom: 48px; }
+  .landing-page .three-steps__process-scroll { height: auto; }
+  .landing-page .three-steps__process { position: relative; top: 0; min-height: 0; height: auto; }
+  .landing-page .landing-nav__mobile-links { max-height: max(120px, calc(100svh - 116px)); overflow-y: auto; }
+}
+
+/* Every main section fills at least one stable viewport, on every screen size.
+   Minimum height lets longer content and animation scroll space grow naturally. */
+.landing-page main section {
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+.landing-page .landing-hero__content {
+  min-height: inherit;
+}
+
+/* The visible desktop stages also fill tall screens instead of stopping at 960px. */
+@media (min-width: 1001px) and (min-height: 651px) {
+  .landing-page .problem-reveal__stage {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+}
+@media (min-width: 1001px) and (min-height: 700px) {
+  .landing-page .three-steps__stage {
+    min-height: max(800px, 100vh);
+    min-height: max(800px, 100svh);
+  }
+}
+
+/* Keep normal-flow sections balanced inside tall desktop viewports. */
+@media (min-width: 701px) {
+  .landing-page .benefits,
+  .landing-page .comparison-section,
+  .landing-page .sample-kit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .landing-page .benefits > div,
+  .landing-page .comparison-section > div { width: 100%; }
+}
+
+/* Fluid large-screen sizing. Scale content rather than stretching cards
+   vertically; retain the existing phone/tablet rules below this breakpoint. */
+@media (min-width: 1440px) {
+  .landing-page .benefits > div { max-width: clamp(1370px, 86vw, 1920px); }
+  .landing-page .benefits__title,
+  .landing-page .comparison-section__title,
+  .landing-page .sample-kit__title {
+    font-size: clamp(48px, 3.333vw, 72px);
+    line-height: 1.2083;
+  }
+  .landing-page .benefits__heading {
+    max-width: clamp(1000px, 70vw, 1500px);
+    font-size: clamp(32px, 2.222vw, 48px);
+    line-height: 1.1875;
+  }
+  .landing-page .benefits__body,
+  .landing-page .comparison-section__head,
+  .landing-page .comparison-section__row,
+  .landing-page .sample-kit__description {
+    font-size: clamp(18px, 1.25vw, 27px);
+    line-height: 1.5556;
+  }
+  .landing-page .benefits__copy .benefits__body { max-width: clamp(1050px, 74vw, 1575px); }
+  .landing-page .benefits__tab { font-size: clamp(24px, 1.667vw, 36px); line-height: 1.25; padding: 12px 40px; }
+  .landing-page .benefits__tabs { margin-top: clamp(56px, 3.889vw, 84px); }
+  .landing-page .benefits__points { margin-top: clamp(80px, 5.556vw, 120px); gap: clamp(48px, 3.333vw, 72px); }
+  .landing-page .benefits__points svg { width: clamp(32px, 2.222vw, 48px); height: clamp(32px, 2.222vw, 48px); }
+
+  .landing-page .comparison-section > div { max-width: clamp(1100px, 80vw, 1760px); }
+  .landing-page .comparison-section__title,
+  .landing-page .comparison-section__table { max-width: clamp(800px, 64vw, 1440px); }
+  .landing-page .comparison-section__title { margin-bottom: clamp(80px, 5.556vw, 120px); }
+  .landing-page .comparison-section__head,
+  .landing-page .comparison-section__row { column-gap: clamp(16px, 2.222vw, 48px); }
+  .landing-page .comparison-section__row { padding-block: clamp(16px, 1.111vw, 24px); }
+  .landing-page .comparison-section__icon { width: clamp(24px, 1.667vw, 36px); height: clamp(24px, 1.667vw, 36px); }
+
+  .landing-page .sample-kit__card {
+    width: 100%;
+    max-width: clamp(1216px, 84.444vw, 1824px);
+    height: auto;
+    min-height: 0;
+    position: static;
+    padding: clamp(88px, 6.111vw, 132px) clamp(116px, 8.056vw, 174px);
+    gap: clamp(64px, 4.444vw, 96px);
+  }
+  .landing-page .sample-kit__description { max-width: clamp(800px, 55.556vw, 1200px); }
+  .landing-page .sample-kit__form { width: min(100%, clamp(696px, 48.333vw, 1044px)); column-gap: clamp(40px, 2.778vw, 60px); row-gap: clamp(24px, 1.667vw, 36px); }
+  .landing-page .sample-kit__form label { font-size: clamp(14px, .9722vw, 21px); line-height: 1.4286; }
+  .landing-page .sample-kit__form input { height: clamp(36px, 2.5vw, 54px); font-size: clamp(14px, .9722vw, 21px); line-height: 1.4286; padding: 8px 12px; }
+  .landing-page .sample-kit__form button { width: clamp(240px, 16.667vw, 360px); height: clamp(44px, 3.056vw, 66px); font-size: clamp(14px, .9722vw, 21px); line-height: 1.4286; }
+}
+
+/* Shared desktop scale: width and available height both limit enlargement. */
+@media (min-width: 1440px) {
+  .landing-page {
+    --desktop-title: clamp(48px, min(3.3333vw, 5.3333vh), 72px);
+    --desktop-subtitle: clamp(32px, min(2.2222vw, 3.5556vh), 48px);
+    --desktop-item-title: clamp(24px, min(1.6667vw, 2.6667vh), 36px);
+    --desktop-body: clamp(18px, min(1.25vw, 2vh), 27px);
+    --desktop-layout: clamp(1104px, 84vw, 1840px);
+    --desktop-gap: clamp(48px, min(3.3333vw, 5.3333vh), 72px);
+  }
+  .landing-page .landing-hero { height: 100vh; height: 100svh; }
+  .landing-page .landing-hero h1 { font-size: clamp(64px, min(4.4444vw, 7.1111vh), 96px); line-height: 1.1875; }
+  .landing-page .landing-hero p { font-size: var(--desktop-item-title); line-height: 1.25; }
+  .landing-page .landing-nav { min-height: clamp(58px, 4.0278vw, 87px); padding: 10px clamp(16px, 1.8056vw, 39px); }
+  .landing-page .landing-nav__logo img { width: clamp(103px, 7.1528vw, 154px); }
+  .landing-page .landing-nav__desktop a { font-size: var(--desktop-body); line-height: 1.5556; }
+  .landing-page .landing-nav__contact { width: clamp(120px, 8.3333vw, 180px); height: clamp(44px, 3.0556vw, 66px); font-size: clamp(14px, .9722vw, 21px); }
+
+  .landing-page .three-steps__inner {
+    width: min(calc(100% - 96px), var(--desktop-layout));
+    gap: clamp(64px, 6.6667vw, 144px);
+  }
+  .landing-page .three-steps__intro h2,
+  .landing-page .features__title,
+  .landing-page .features__arena-title,
+  .landing-page .benefits__title,
+  .landing-page .comparison-section__title,
+  .landing-page .sample-kit__title { font-size: var(--desktop-title); line-height: 1.2083; }
+  .landing-page .three-steps__heading,
+  .landing-page .benefits__heading { font-size: var(--desktop-subtitle); line-height: 1.1875; }
+  .landing-page .three-steps__step h3,
+  .landing-page .features__item-title { font-size: var(--desktop-item-title); line-height: 1.25; }
+  .landing-page .three-steps__intro p,
+  .landing-page .three-steps__step p,
+  .landing-page .features__body,
+  .landing-page .benefits__body,
+  .landing-page .comparison-section__head,
+  .landing-page .comparison-section__row,
+  .landing-page .sample-kit__description { font-size: var(--desktop-body); line-height: 1.5556; }
+  .landing-page .three-steps__intro p,
+  .landing-page .three-steps__step p { max-width: none; }
+  .landing-page .three-steps__items { gap: 56px; }
+  .landing-page .three-steps__step { min-height: 130px; }
+
+  .landing-page .features__grid,
+  .landing-page .features__animation { max-width: var(--desktop-layout); }
+  .landing-page .features__grid { gap: var(--desktop-gap); }
+  .landing-page .features__body { max-width: clamp(330px, 22.9167vw, 495px); }
+  .landing-page .features__item-icon { width: clamp(40px, 2.7778vw, 60px); height: clamp(40px, 2.7778vw, 60px); }
+  .landing-page .features__activity-icon,
+  .landing-page .features__pill > svg { width: clamp(24px, 1.6667vw, 36px); height: clamp(24px, 1.6667vw, 36px); flex-shrink: 0; }
+
+  .landing-page .benefits { padding-block: clamp(80px, 8vh, 144px); }
+  .landing-page .benefits__tab { font-size: var(--desktop-item-title); }
+  .landing-page .benefits__points { gap: var(--desktop-gap); }
+  .landing-page .sample-kit__card { position: static; height: auto; min-height: 0; }
+  .landing-page .landing-footer { padding-block: clamp(80px, 5.5556vw, 120px); }
+  .landing-page .landing-footer__logo img { width: clamp(274px, 19.0278vw, 411px); }
+  .landing-page .landing-footer__links a { font-size: var(--desktop-body); line-height: 1.5556; }
+  .landing-page .landing-footer__copyright { font-size: clamp(14px, .9722vw, 21px); line-height: 1.4286; }
+}
+
+/* Match scroll distances to full-height stages, including screens taller than
+   the old 960px cap. Do not change the duration/ordering of either reveal. */
+@media (min-width: 1001px) and (min-height: 800px) and (prefers-reduced-motion: no-preference) {
+  .landing-page .three-steps { height: 200vh; height: 200svh; }
+  .landing-page .three-steps__stage {
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+  }
+  .landing-page .three-steps__inner { padding-block: 48px; }
+}
+@media (min-width: 1001px) and (min-height: 651px) and (prefers-reduced-motion: no-preference) {
+  .landing-page .problem-reveal { height: 285vh; height: 285svh; }
+  .landing-page .problem-reveal__stage { height: 100vh; height: 100svh; }
+}
+@media (min-width: 1440px) and (min-height: 900px) {
+  .landing-page .problem-reveal__content { width: min(94%, 1920px); height: min(90svh, 1275px); }
+  .landing-page .problem-reveal__title {
+    width: min(calc(100% - 48px), clamp(1000px, 69.4444vw, 1500px));
+    top: clamp(100px, 19%, 243px);
+    font-size: clamp(56px, min(3.8889vw, 6.2222vh), 84px);
+    line-height: 1.2143;
+  }
+  .landing-page .problem-reveal__description {
+    max-width: clamp(800px, 55.5556vw, 1200px);
+    top: calc(clamp(100px, 19%, 243px) + clamp(276px, min(19.1667vw, 30.6667vh), 414px));
+    font-size: var(--desktop-subtitle);
+    line-height: 1.1875;
+  }
+  .landing-page .problem-reveal__card {
+    width: clamp(300px, 20.8333vw, 450px);
+    min-height: clamp(122px, 8.4722vw, 183px);
+    font-size: var(--desktop-body);
+    line-height: 1.5556;
+  }
+  .landing-page .problem-reveal__stage { background-size: max(100%, 1980px) max(1349px, 100svh); }
+}
+
+/* Scale the original 1104 x 600 activity composition as one unit.
+   Geometry, labels, icons and spacing all use the same scale factor. */
+@media (min-width: 1001px) and (min-height: 700px) {
+  .landing-page .features__animation {
+    --activity-unit: min(0.06884058vw, 0.125svh, 1.5px);
+    width: calc(var(--activity-unit) * 1104);
+    max-width: 100%;
+    margin-inline: auto;
+  }
+  .landing-page .features__arena { height: calc(var(--activity-unit) * 600); }
+  .landing-page .features__arena-title {
+    width: 39.3116%;
+    font-size: calc(var(--activity-unit) * 48);
+    line-height: 1.2083;
+  }
+  .landing-page .features__pill {
+    font-size: calc(var(--activity-unit) * 24);
+    line-height: 1.25;
+    min-width: 0;
+    min-height: calc(var(--activity-unit) * 48);
+    padding: calc(var(--activity-unit) * 9) calc(var(--activity-unit) * 16);
+    gap: calc(var(--activity-unit) * 8);
+  }
+  .landing-page .features__activity-icon,
+  .landing-page .features__pill > svg {
+    width: calc(var(--activity-unit) * 24);
+    height: calc(var(--activity-unit) * 24);
+    flex-shrink: 0;
+  }
+  .landing-page .features__pill--pruning { top: 13.3333%; right: 53.8949%; width: 15.3986%; }
+  .landing-page .features__pill--fertiliser { top: 12.6667%; left: 53.8949%; width: 16.3949%; }
+  .landing-page .features__pill--foliar { top: 29.6667%; right: 11%; width: max-content; }
+  .landing-page .features__pill--pest { top: 51.75%; right: 4.5%; width: 19.837%; }
+  .landing-page .features__pill--harvest { top: 51.75%; left: 4.5%; width: max-content; }
+  .landing-page .features__pill--soil { top: 82.0833%; right: 55.5933%; width: 24.0942%; }
+  .landing-page .features__pill--disease { top: 83.5833%; left: 52.1966%; width: 27.4909%; }
+  .landing-page .features__pill--irrigation { top: 29%; left: 11%; width: 15.8514%; }
+}

@@ -1,0 +1,74 @@
+.benefits { height: auto; min-height: 100vh; min-height: 100svh; box-sizing: border-box; scroll-margin-top: 145px; font-family: "CropTags Inter", "Inter", sans-serif; }
+.benefits__tab {
+  background: #f3f5f5;
+  color: #20272d;
+  cursor: pointer;
+  transition: color .25s ease;
+}
+.benefits__tab[aria-selected="true"] {
+  background: transparent;
+  color: white;
+}
+.benefits__tab:focus-visible {
+  outline: 3px solid #10275f;
+  outline-offset: 3px;
+}
+@media (max-width: 700px) {
+  .benefits__points svg { width: 26px; height: 26px; }
+}
+@media (max-width: 380px) {
+}
+
+.benefits__title {
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: -0.4px;
+  font-weight: 500;
+  color: #00a160;
+}
+.benefits__tab {
+  font-family: inherit;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -0.15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.benefits__heading {
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: -0.2px;
+  font-weight: 500;
+}
+.benefits__body {
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+.benefits__title, .benefits__heading, .benefits__tab, .benefits__body { text-transform: none; }
+@media (max-width: 600px) {
+  .benefits__title { font-size: clamp(36px, 8vw, 48px); line-height: 1.2083; }
+  .benefits__tabs { gap: 12px; }
+  .benefits__tab { font-size: 20px; line-height: 26px; padding-inline: 12px; }
+  .benefits__heading { font-size: clamp(26px, 6vw, 32px); line-height: 1.1875; }
+}
+
+@media (max-width: 700px) {
+  .benefits { padding-inline: 24px; }
+  .benefits__title, .benefits__heading { font-size: 32px; line-height: 38px; letter-spacing: -0.2px; text-align: center; }
+  .benefits__tabs { gap: 16px; }
+  .benefits__tab { padding: 8px 24px; font-size: 16px; line-height: 24px; letter-spacing: 0; }
+  .benefits__body { font-size: 16px; line-height: 24px; letter-spacing: 0; }
+  .benefits__points { column-gap: 16px; }
+  .benefits__points svg { width: 32px; height: 32px; }
+}
+@media (max-width: 359px) {
+  .benefits__tab { padding-inline: 16px; }
+}
+
+/* Initial state matches the first frame of the scroll sequence. */
+.benefits__word { opacity: 0.22; }
+@media (prefers-reduced-motion: reduce) {
+  .benefits__word { opacity: 1; }
+}

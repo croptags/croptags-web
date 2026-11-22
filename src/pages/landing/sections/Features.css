@@ -1,0 +1,180 @@
+.features {
+  scroll-margin-top: 80px;
+  font-family: "CropTags Inter", "Inter", sans-serif;
+  padding: 88px 2.5% 20px;
+  background-color: #ecfff7;
+  background-image: url("/assets/image/ellipse-11.svg"), radial-gradient(ellipse at 58% 68%, #f4ffbf 0%, transparent 60%);
+  background-repeat: no-repeat;
+  background-position: center -485px, center;
+  background-size: max(100%, 1816px) 955px, 100% 100%;
+}
+.features__panel {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  padding: 128px 48px 80px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, .38);
+  border: 0;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  box-shadow: none;
+}
+.features__animation { height: auto; max-width: 1104px; margin: 120px auto 0; font-family: "CropTags Inter", "Inter", sans-serif; }
+.features__arena { position: relative; height: 600px; }
+.features__arena-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(100%, 434px);
+  transform: translate(-50%, -50%);
+}
+.features__pill {
+  position: absolute;
+  z-index: 1;
+  white-space: nowrap;
+  box-sizing: border-box;
+  min-width: 170px;
+  min-height: 48px;
+  padding: 9px 16px;
+  justify-content: center;
+  gap: 8px;
+  font-family: "CropTags Inter", "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: -0.15px;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+.features__pill--pruning { top: 80px; right: calc(50% + 43px); width: 170px; }
+.features__pill--fertiliser { top: 76px; left: calc(50% + 43px); width: 181px; }
+.features__pill--foliar { top: 178px; right: 11%; }
+.features__pill--pest { top: 310.5px; right: 4.5%; width: 219px; }
+.features__pill--disease { top: 501.5px; left: calc(50% + 24.25px); width: 303.5px; }
+.features__pill--soil { top: 492.5px; right: calc(50% + 61.75px); width: 266px; }
+.features__pill--harvest { top: 310.5px; left: 4.5%; }
+.features__pill--irrigation { top: 174px; left: 11%; min-width: 175px; }
+
+
+.features__title, .features__arena-title {
+  margin: 0;
+  font-family: "CropTags Inter", "Inter", sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 58px;
+  letter-spacing: -0.4px;
+  text-align: center;
+  color: #123359;
+  text-transform: none;
+}
+.features__item-title {
+  margin: 0 0 16px;
+  font-family: "CropTags Inter", "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: -0.15px;
+  color: #20272d;
+}
+.features__body {
+  max-width: 330px;
+  margin: 0;
+  font-family: "CropTags Inter", "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0;
+  color: #7997a2;
+}
+@media (min-width: 1001px) and (max-width: 1199px) {
+  .features__pill--harvest { left: 0; }
+  .features__pill--pest { right: 0; }
+}
+@media (max-width: 1000px), (max-height: 699px) {
+  .features__animation { margin-top: 64px; }
+  .features__grid { grid-template-columns: 1fr; }
+  .features__body { max-width: 600px; }
+  .features__title, .features__arena-title { font-size: clamp(30px, 4.5vw, 48px); line-height: 1.2083; }
+  .features__arena { height: auto; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .features__arena-title { position: relative; inset: auto; transform: none; margin-bottom: 24px; }
+  .features__pill { position: relative; inset: auto; width: max-content; max-width: 100%; min-width: 170px; white-space: normal; }
+  .features__pill:nth-of-type(odd) { align-self: flex-start; }
+  .features__pill:nth-of-type(even) { align-self: flex-end; }
+  .features__pill svg { flex-shrink: 0; }
+}
+@media (max-width: 380px) {
+  .features__panel { padding-inline: 16px; }
+  .features__pill { font-size: 20px; line-height: 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .features__pill { visibility: visible; }
+}
+
+.features__grid { max-width: 1104px; margin-inline: auto; }
+
+.features__item-icon { display: block; width: 40px; height: 40px; object-fit: contain; }
+
+.features__activity-icon { display: block; width: 24px; height: 24px; object-fit: contain; flex-shrink: 0; }
+
+@media (max-width: 1000px) {
+  .features { padding: 64px 24px 20px; }
+  .features__panel { padding: 80px 32px 64px; }
+}
+@media (max-width: 600px) {
+  .features { padding: 48px 16px 20px; }
+  .features__panel { padding: 64px 24px; }
+}
+@media (max-width: 380px) {
+  .features__panel { padding-inline: 16px; }
+}
+
+@media (max-width: 700px) {
+  .features { padding-inline: 24px; }
+  .features__panel { padding: 80px 16px 64px; }
+  .features__title { font-size: 32px; line-height: 38px; letter-spacing: -0.2px; text-align: center; }
+  .features__grid { gap: 56px; text-align: left; }
+  .features__item-title { text-align: left; }
+  .features__body { text-align: left; color: #788d98; }
+  .features__animation { margin-top: 120px; }
+  .features__arena-title { width: min(100%, 208px); margin-bottom: 56px; font-size: 40px; line-height: 48px; letter-spacing: -0.3px; text-align: center; }
+  .features__pill {
+    width: 200px; max-width: 100%; min-width: 0; min-height: 46px;
+    padding: 8px 24px; gap: 8px; border: 1px solid #fff;
+    background: #009e58; -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+    font-size: 18px; line-height: 28px; letter-spacing: 0;
+  }
+  .features__pill--soil, .features__pill--disease { width: max-content; }
+}
+
+/* Bring the desktop activity heading closer to the feature summaries. */
+@media (min-width: 1001px) and (min-height: 700px) {
+  .features__animation { margin-top: 32px; }
+  .features__arena { height: 480px; }
+  .features__pill--pruning { top: 64px; }
+  .features__pill--fertiliser { top: 61px; }
+  .features__pill--foliar { top: 142px; }
+  .features__pill--pest, .features__pill--harvest { top: 248px; }
+  .features__pill--disease { top: 401px; }
+  .features__pill--soil { top: 394px; }
+  .features__pill--irrigation { top: 139px; }
+}
+
+/* One desktop scroll sequence: heading, then the three summaries in order.
+   Use the same sticky-stage arrangement as the durian market section. */
+.features__summary-content { width: 100%; }
+@media (min-width: 1001px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {
+  .landing-page .features__panel { padding-top: 0; }
+  .features__summary-scroll { height: calc(100vh + max(1200px, 160vh)); height: calc(100svh + max(1200px, 160svh)); }
+  .features__summary {
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-block: 48px;
+  }
+}

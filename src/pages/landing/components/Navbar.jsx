@@ -1,120 +1,82 @@
-// import React, { useState } from "react";
-import logo from "@/assets/logo.svg";
+import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "motion/react";
+import { Menu, X } from "lucide-react";
+import "./Navbar.css";
+
+const links = [
+  { label: "How it works", href: "#how-it-works" },
+  { label: "Features", href: "#feature" },
+  { label: "For Farmers", href: "#beneficials", benefit: "farmers" },
+  { label: "For Buyers", href: "#beneficials", benefit: "buyers" },
+];
+
+function selectBenefit(benefit) {
+  if (benefit) window.dispatchEvent(new CustomEvent("croptags:benefit", { detail: benefit }));
+}
 
 export const Navbar = () => {
-  // const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const toggleRef = useRef(null);
+  const changeMenu = (next) => {
+    setOpen(next);
+    if (next) setExpanded(true);
+    else if (reducedMotion) setExpanded(false);
+  };
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1001px)");
+    const reset = () => { if (desktop.matches) { setOpen(false); setExpanded(false); } };
+    desktop.addEventListener("change", reset);
+    return () => desktop.removeEventListener("change", reset);
+  }, []);
 
   return (
-    <nav className="fixed top-16 left-9 right-9 bg-white/80 backdrop-blur-xl rounded-full p-6 flex items-center justify-between">
-      {/* Logo */}
-      <a href="#" className="flex items-center">
-        <img
-          src={logo}
-          alt="CropTags Logo"
-          className="h-6 w-auto object-contain"
-        />
+    <header className={`landing-nav${open ? " landing-nav--open" : ""}${expanded ? " landing-nav--expanded" : ""}`} onKeyDown={(event) => {
+      if (event.key === "Escape" && open) {
+        changeMenu(false);
+        toggleRef.current?.focus();
+      }
+    }}>
+      <a className="landing-nav__logo" href="#top" aria-label="CropTags home" onClick={() => changeMenu(false)}>
+        <img src="/assets/image/logo.svg" alt="CropTags" />
       </a>
-
-      {/* Nav Links (Centered - Desktop) */}
-      <ul className="hidden md:flex items-center gap-8 font-medium text-gray-700">
-        <li>
-          <a
-            href="#how-it-works"
-            className="hover:text-black transition-colors"
-          >
-            How it works
-          </a>
-        </li>
-        <li>
-          <a href="#feature" className="hover:text-black transition-colors">
-            Feature
-          </a>
-        </li>
-        <li>
-          <a href="#for-farmer" className="hover:text-black transition-colors">
-            For Farmer
-          </a>
-        </li>
-        <li>
-          <a href="#for-buyer" className="hover:text-black transition-colors">
-            For Buyer
-          </a>
-        </li>
-      </ul>
-
-      {/* Action Button (Desktop) */}
-      <div className="hidden md:block">
-        <button className="bg-black text-white px-6 py-2.5 rounded-full font-medium hover:bg-gray-800 transition-colors">
-          Contact Us
-        </button>
-      </div>
-
-      {/* Mobile Menu Toggle Button */}
-      {/* <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden text-gray-700 focus:outline-none"
-        aria-label="Toggle Menu"
+      <nav className="landing-nav__desktop" aria-label="Main navigation">
+        {links.map(({ label, href, benefit }) => (
+          <a key={label} href={href} onClick={() => selectBenefit(benefit)}>{label}</a>
+        ))}
+      </nav>
+      <a className="landing-nav__contact" href="#contact">Contact Us</a>
+      <button
+        ref={toggleRef}
+        className="landing-nav__toggle"
+        type="button"
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        aria-controls="landing-mobile-menu"
+        onClick={() => changeMenu(!open)}
       >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          {isOpen ? (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          ) : (
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          )}
-        </svg>
-      </button> */}
-
-      {/* Mobile Menu Dropdown */}
-      {/* {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-3 bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-xl md:hidden flex flex-col gap-4 text-gray-800 font-medium text-center border border-gray-100">
-          <a
-            href="#how-it-works"
-            onClick={() => setIsOpen(false)}
-            className="hover:text-black py-1"
-          >
-            How it works
-          </a>
-          <a
-            href="#feature"
-            onClick={() => setIsOpen(false)}
-            className="hover:text-black py-1"
-          >
-            Feature
-          </a>
-          <a
-            href="#for-farmer"
-            onClick={() => setIsOpen(false)}
-            className="hover:text-black py-1"
-          >
-            For Farmer
-          </a>
-          <a
-            href="#for-buyer"
-            onClick={() => setIsOpen(false)}
-            className="hover:text-black py-1"
-          >
-            For Buyer
-          </a>
-          <button className="w-full bg-black text-white py-3 rounded-full font-medium hover:bg-gray-800 transition-colors mt-2">
-            Get Started
-          </button>
+        {open ? <X size={21} /> : <Menu size={21} />}
+      </button>
+      <nav
+        id="landing-mobile-menu"
+        className="landing-nav__mobile"
+        aria-label="Mobile navigation"
+        aria-hidden={!open}
+        inert={!open}
+        onTransitionEnd={(event) => {
+          if (event.target === event.currentTarget && event.propertyName === "grid-template-rows" && !open) setExpanded(false);
+        }}
+      >
+        <div className="landing-nav__mobile-clip">
+        <div className="landing-nav__mobile-links">
+          {links.map(({ label, href, benefit }) => (
+            <a key={label} href={href} onClick={() => { selectBenefit(benefit); changeMenu(false); }}>{label}</a>
+          ))}
         </div>
-      )} */}
-    </nav>
+        </div>
+      </nav>
+    </header>
   );
 };

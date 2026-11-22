@@ -1,0 +1,22 @@
+.landing-footer { min-height: 360px; font-family: "CropTags Inter", "Inter", sans-serif; }
+.landing-footer__logo img { display: block; width: min(274px, 70vw); height: auto; transition: transform .25s ease; }
+.landing-footer__logo:hover img, .landing-footer__logo:focus-visible img { transform: scale(1.04); }
+.landing-footer__links a { position: relative; font-size: 18px; line-height: 28px; letter-spacing: 0; font-weight: 500; text-decoration: none; transition: color .22s ease; }
+.landing-footer__copyright { font-size: 14px; line-height: 20px; letter-spacing: 0; font-weight: 400; }
+.landing-footer__links a:hover, .landing-footer__links a:focus-visible { color: #006342; }
+@media (max-width: 700px) {
+  .landing-footer { min-height: 440px; padding: 75px 20px 35px; }
+  .landing-footer__links { flex-direction: column; align-items: center; gap: 26px; margin: 50px 0 55px; }
+}
+
+.landing-footer__logo picture { display: block; }
+.landing-footer__mobile-break { display: none; }
+@media (max-width: 700px) {
+  .landing-footer { min-height: 0; padding: 120px 24px 24px; display: flex; flex-direction: column; align-items: center; }
+  .landing-footer__logo { max-width: 100%; }
+  .landing-footer__logo img { width: 273px; max-width: 100%; }
+  .landing-footer__links { margin: 64px 0; gap: 40px; }
+  .landing-footer__links a { text-align: center; }
+  .landing-footer__copyright { width: 100%; max-width: 312px; margin-top: 0; text-align: center; }
+  .landing-footer__mobile-break { display: block; }
+}

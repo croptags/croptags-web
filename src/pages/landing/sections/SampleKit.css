@@ -1,0 +1,41 @@
+.sample-kit { background: transparent; scroll-margin-top: 40px; padding: 32px 2.5% 32px; }
+.sample-kit__card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1216px;
+  height: auto;
+  min-height: 0;
+  position: static;
+  margin-inline: auto;
+  padding: 88px 116px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  border-radius: 32px;
+  background: radial-gradient(ellipse at 50% 0%, #009e58 0%, #02653f 100%);
+  font-family: "CropTags Inter", "Inter", sans-serif;
+  text-align: center;
+  color: #fff;
+}
+.sample-kit__intro { width: 100%; }
+.sample-kit__title { margin: 0; font-size: 48px; line-height: 58px; letter-spacing: -0.4px; font-weight: 500; }
+.sample-kit__description { margin: 16px auto 0; max-width: 800px; font-size: 18px; line-height: 28px; letter-spacing: 0; font-weight: 400; }
+.sample-kit__form { width: min(100%, 696px); margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; row-gap: 24px; text-align: left; }
+.sample-kit__form label { min-width: 0; color: #fff; font-family: inherit; font-size: 14px; line-height: 20px; letter-spacing: -0.16px; font-weight: 500; text-transform: none; }
+.sample-kit__form input { box-sizing: border-box; display: block; width: 100%; height: 36px; margin-top: 4px; padding: 8px; border: 0; border-radius: 8px; outline: 2px solid transparent; background: #f5f6f6; color: #1b3231; font: 400 14px/20px "CropTags Inter", "Inter", sans-serif; letter-spacing: 0; }
+.sample-kit__form input::placeholder { color: #c3d0d7; opacity: 1; }
+.sample-kit__form input:focus { outline-color: #00cd7b; }
+.sample-kit__form button { box-sizing: border-box; grid-column: 1/-1; justify-self: center; width: 240px; height: 44px; margin-top: 8px; padding: 12px 8px; border-radius: 100px; border: 0; background: #00c878; color: #fff; font: 700 14px/20px "CropTags Inter", "Inter", sans-serif; letter-spacing: 0; transition: background .22s ease, transform .22s ease; }
+.sample-kit__form button:hover, .sample-kit__form button:focus-visible { background: #21d58c; transform: translateY(-2px); }
+@media (max-width: 1000px) {
+  .sample-kit { padding-inline: 24px; }
+  .sample-kit__card { padding-inline: 48px; }
+}
+@media (max-width: 700px) {
+  .sample-kit { padding-inline: 16px; }
+  .sample-kit__card { padding: 64px 24px; gap: 48px; }
+  .sample-kit__title { font-size: clamp(30px, 7vw, 48px); line-height: 1.2083; }
+  .sample-kit__form { grid-template-columns: minmax(0, 1fr); column-gap: 0; }
+  .sample-kit__form button { width: min(100%, 240px); }
+}

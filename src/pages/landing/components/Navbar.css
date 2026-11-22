@@ -1,0 +1,141 @@
+@font-face {
+  font-family: "CropTags Inter";
+  src: url("/assets/fonts/Inter-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CropTags Inter";
+  src: url("/assets/fonts/Inter-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CropTags Inter";
+  src: url("/assets/fonts/Inter-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+.landing-nav {
+  position: absolute;
+  z-index: 50;
+  top: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 2040px);
+  box-sizing: border-box;
+  min-height: 58px;
+  padding: 7px 10px 7px 26px;
+  border-radius: 100px;
+  background: rgba(246, 255, 251, .94);
+  color: #1b282b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+}
+.landing-nav__logo img { display: block; width: 103px; height: auto; }
+.landing-nav__desktop { display: flex; align-items: center; gap: clamp(22px, 3vw, 55px); }
+.landing-nav__desktop a,
+.landing-nav__mobile a {
+  position: relative;
+  font-family: "CropTags Inter", "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0;
+  font-weight: 500;
+  text-transform: none;
+  text-decoration: none;
+  transition: color .22s ease;
+}
+.landing-nav__desktop a:hover,
+.landing-nav__desktop a:focus-visible,
+.landing-nav__mobile a:hover,
+.landing-nav__mobile a:focus-visible { color: #008f59; }
+.landing-nav__contact {
+  box-sizing: border-box;
+  width: 120px;
+  height: 44px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: #1f2429;
+  color: white;
+  font-family: "CropTags Inter", "Inter", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0;
+  font-weight: 700;
+  padding: 12px 8px;
+  line-height: 20px;
+  transition: background .22s ease, transform .22s ease;
+}
+.landing-nav__contact:hover,
+.landing-nav__contact:focus-visible { background: #007f50; transform: translateY(-2px); }
+.landing-nav__toggle { display: none; }
+.landing-nav__mobile { display: none; }
+
+.landing-nav__desktop a, .landing-nav__contact { white-space: nowrap; }
+@media (max-width: 1000px) {
+  .landing-nav {
+    top: 24px;
+    width: calc(100% - 48px);
+    min-height: 62px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, .85);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 39px;
+    grid-template-rows: 39px auto;
+    align-items: center;
+    border-radius: 32px;
+    background: rgba(246, 247, 247, .94);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    transition: background-color .2s ease;
+  }
+  .landing-nav--expanded { border-radius: 24px; }
+  .landing-nav--open { background: rgba(246, 247, 247, .96); }
+  .landing-nav__logo { grid-column: 1; grid-row: 1; justify-self: start; }
+  .landing-nav__desktop, .landing-nav__contact { display: none; }
+  .landing-nav__toggle {
+    grid-column: 2; grid-row: 1;
+    width: 39px; height: 39px; padding: 0;
+    display: grid; place-items: center;
+    border: 0; border-radius: 50%; background: #1f2429; color: white; cursor: pointer;
+  }
+  .landing-nav__mobile {
+    grid-column: 1 / -1; grid-row: 2;
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows .24s ease, opacity .16s ease;
+    position: static;
+    width: 100%; min-height: 0;
+    margin: 0; padding: 0;
+    overflow: hidden;
+    background: transparent;
+  }
+  .landing-nav--open .landing-nav__mobile { grid-template-rows: 1fr; opacity: 1; }
+  .landing-nav__mobile-clip { min-height: 0; overflow: hidden; }
+  .landing-nav__mobile-links { display: flex; flex-direction: column; gap: 24px; padding: 24px 0 14px; }
+  .landing-nav__mobile a {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; min-height: 40px;
+    color: #1c2024;
+    font-family: "CropTags Inter", "Inter", sans-serif;
+    font-size: 18px; line-height: 28px; font-weight: 500; letter-spacing: 0;
+    text-align: center; text-decoration: none;
+  }
+  .landing-nav__mobile a:hover, .landing-nav__mobile a:focus-visible { color: #009e58; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landing-nav, .landing-nav__mobile { transition: none; }
+}
