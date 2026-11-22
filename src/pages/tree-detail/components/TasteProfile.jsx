@@ -1,4 +1,4 @@
-import { Droplets } from "lucide-react";
+import { Star } from "lucide-react";
 import {
   SectionTitle,
   TreeInfoCard,
@@ -26,7 +26,7 @@ export function TasteProfile({ profile = {}, t }) {
               aria-label={`${t(key)}: ${value ?? 0} out of 5`}
             >
               {[1, 2, 3, 4, 5].map((level) => (
-                <Droplets
+                <Star
                   key={level}
                   size={20}
                   strokeWidth={1.6}
