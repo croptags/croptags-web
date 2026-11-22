@@ -70,7 +70,7 @@ function Hero({ tree, t, language, onOpenLanguage }) {
           {tree.variety?.name || "Durian tree"}
           {tree.variety?.code ? ` (${tree.variety.code})` : ""}
         </h1>
-        <p className="body-2-medium md:body-1-medium text-text-tertiary md:pb-2.5">
+        <p className="body-2-regular md:body-1-regular text-text-tertiary md:pb-2.5">
           {tree.tree_label}
         </p>
       </div>
