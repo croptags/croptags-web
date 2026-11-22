@@ -12,11 +12,7 @@ export const TreeInfoCard = ({ children, className = "" }) => {
 };
 
 export function SectionTitle({ children }) {
-  return (
-    <h2 className="heading-h5-medium text-text-primary">
-      {children}
-    </h2>
-  );
+  return <h2 className="heading-h5-medium text-text-primary">{children}</h2>;
 }
 
 function LocationPanel({ tree, t, locale }) {
@@ -36,13 +32,17 @@ function LocationPanel({ tree, t, locale }) {
             {tree.farm_name || t("farm")}
           </p>
           <span className="body-3-regular md:body-2-regular text-text-secondary">
-            {[location.mukim, location.district].filter(Boolean).join(", ")}<br />
+            {[location.mukim, location.district].filter(Boolean).join(", ")}
+            <br />
           </span>
           <span className="body-3-regular md:body-2-regular text-text-secondary">
-            {[location.state, location.country].filter(Boolean).join(", ")}<br />
+            {[location.state, location.country].filter(Boolean).join(", ")}
+            <br />
           </span>
           {coordinates && (
-            <span className="body-4-regular md:body-3-regular text-text-secondary">{coordinates}</span>
+            <span className="body-4-regular md:body-3-regular text-text-secondary">
+              {coordinates}
+            </span>
           )}
         </div>
       </div>
@@ -56,7 +56,9 @@ function LocationPanel({ tree, t, locale }) {
               year: "numeric",
             })}
           </p>
-          <p className="body-4-regular md:body-3-regular text-text-secondary">{t("datePlanted")}</p>
+          <p className="body-4-regular md:body-3-regular text-text-secondary">
+            {t("datePlanted")}
+          </p>
         </div>
       </div>
     </div>

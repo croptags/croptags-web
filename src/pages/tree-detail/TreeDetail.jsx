@@ -63,9 +63,14 @@ function Hero({ tree, t, language, onOpenLanguage }) {
         {language.toUpperCase()} <ChevronDown size={16} />
       </button>
       <div className="absolute inset-x-4 bottom-8 text-white sm:inset-x-8">
-        <span className="label-2-medium md:label-1-medium mb-2 inline-flex items-center gap-1 rounded-full border border-success-border bg-success-bg px-2.5 py-1 text-success-text">
-          {status}
-        </span>
+        <div className="flex gap-2">
+          <span className="label-2-medium md:label-1-medium mb-2 inline-flex items-center gap-1 rounded-full border border-info-border bg-info-bg px-2.5 py-1 text-info-text">
+            {tree.tree_label}
+          </span>
+          <span className="label-2-medium md:label-1-medium mb-2 inline-flex items-center gap-1 rounded-full border border-success-border bg-success-bg px-2.5 py-1 text-success-text">
+            {status}
+          </span>
+        </div>
         <h1 className="heading-h5-medium sm:heading-h4-medium md:heading-h2-medium md:pb-2.5">
           {tree.variety?.name || "Durian tree"}
           {tree.variety?.code ? ` (${tree.variety.code})` : ""}

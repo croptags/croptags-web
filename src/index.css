@@ -11,10 +11,17 @@
   --color-text-on-brand: #ffffff;
   --color-text-secondary: #788d98;
   --color-border-default: #e3e8ea;
+
   --color-success-solid: #00ca6d;
   --color-success-text: #00804d;
   --color-success-border: #00f288;
   --color-success-bg: #ecfff7;
+
+  --color-info-solid: #0ea5e9;
+  --color-info-text: #075985;
+  --color-info-border: #38bdf8;
+  --color-info-bg: #f0f9ff;
+
   --color-surface-subtle: #f4f6f7;
 }
 
