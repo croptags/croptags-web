@@ -43,7 +43,7 @@ function LocationPanel({ tree, t, locale }) {
           </span>
           {embedUrl && (
             <div className="pt-3">
-              <div className="aspect-2/1 w-full overflow-hidden rounded-lg border border-gray-200">
+              <div className="aspect-4/3 w-full overflow-hidden rounded-lg border border-gray-200">
                 <iframe
                   title="Location Map"
                   src={embedUrl}
