@@ -42,8 +42,8 @@ function getTreeAge(value) {
 
 function Hero({ tree, t, language, onOpenLanguage }) {
   const status =
-    typeof tree.health === "string" && tree.health.toLowerCase() !== "healthy"
-      ? tree.health
+    typeof tree.status === "string" && tree.status.toLowerCase() !== "healthy"
+      ? tree.status
       : t("healthy");
 
   return (
@@ -218,52 +218,50 @@ export const TreeDetail = () => {
   //     cert_no: "myGAP.19.1088/B-5795",
   //     date_certified: "2012-09-23",
   //   },
-  //   health: "Healthy",
+  //   status: "Healthy",
   //   activities_log: [
   //     {
   //       date: "2022-07-31",
   //       action_type: "Pesticide",
-  //       product: "ABC Pest",
-  //       by_who: "Ahmad Shukri",
+  //       product: "Decis",
+  //       by_who: "Lili",
   //     },
   //     {
   //       date: "2022-07-30",
   //       action_type: "Fungicide",
-  //       product: "Leaf treatment",
-  //       by_who: "Ahmad Shukri",
+  //       product: "Antracol",
+  //       by_who: "Lili",
   //     },
   //     {
   //       date: "2022-07-29",
   //       action_type: "Pruning",
-  //       product: "",
-  //       by_who: "Ahmad Shukri",
+  //       by_who: "Lili",
   //     },
   //     {
   //       date: "2022-07-28",
   //       action_type: "Fertilizer",
-  //       product: "NPK 15-15-15: Cow dung fertilizers",
-  //       by_who: "Ahmad Shukri",
+  //       product: "Entec 12/12/17",
+  //       by_who: "Lili",
   //     },
   //     {
   //       date: "2022-07-27",
   //       action_type: "Watering",
-  //       product: "",
-  //       by_who: "Ahmad Shukri",
+  //       by_who: "Lili",
   //     },
   //     {
   //       date: "2022-07-26",
   //       action_type: "Attention",
-  //       product: "Inspect leaves for signs of stress",
-  //       by_who: "Ahmad Shukri",
+  //       description: "Yellow leaves",
+  //       by_who: "Lili",
   //     },
   //   ],
   //   harvest_log: [
-  //     { date: "2024-07-31", weight_kg: 160, by_who: "Ahmad Shukri" },
-  //     { date: "2023-07-21", weight_kg: 80, by_who: "Ahmad Shukri" },
-  //     { date: "2022-07-31", weight_kg: 112, by_who: "Ahmad Shukri" },
-  //     { date: "2021-08-02", weight_kg: 96, by_who: "Ahmad Shukri" },
-  //     { date: "2020-07-28", weight_kg: 74, by_who: "Ahmad Shukri" },
-  //     { date: "2019-07-30", weight_kg: 68, by_who: "Ahmad Shukri" },
+  //     { date: "2024-07-31", weight_kg: 160, by_who: "Lili" },
+  //     { date: "2023-07-21", weight_kg: 80, by_who: "Lili" },
+  //     { date: "2022-07-31", weight_kg: 112, by_who: "Lili" },
+  //     { date: "2021-08-02", weight_kg: 96, by_who: "Lili" },
+  //     { date: "2020-07-28", weight_kg: 74, by_who: "Lili" },
+  //     { date: "2019-07-30", weight_kg: 68, by_who: "Lili" },
   //   ],
   // };
 
