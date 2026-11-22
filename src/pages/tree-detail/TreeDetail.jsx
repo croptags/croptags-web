@@ -51,6 +51,8 @@ function Hero({ tree, t, language, onOpenLanguage }) {
       <img
         src={detailBanner}
         alt="Durian growing on a tree"
+        fetchPriority="high"
+        decoding="async"
         className="absolute inset-0 -z-20 h-full w-full object-cover"
       />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-foreground/0 to-foreground" />
@@ -137,6 +139,11 @@ export const TreeDetail = () => {
     setLanguage(nextLanguage);
     closeLanguagePicker();
   };
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = detailBanner;
+  }, []);
 
   useEffect(() => {
     if (!id) return undefined;
