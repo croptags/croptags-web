@@ -17,10 +17,12 @@ export function SectionTitle({ children }) {
 
 function LocationPanel({ tree, t, locale }) {
   const { location = {} } = tree;
-  const coordinates = [location.latitude, location.longitude].every(
+  const hasCoordinates = [location.latitude, location.longitude].every(
     (coordinate) => coordinate != null,
-  )
-    ? `${Number(location.latitude).toFixed(4)}° N, ${Number(location.longitude).toFixed(4)}° E`
+  );
+
+  const embedUrl = hasCoordinates
+    ? `https://maps.google.com/maps?q=${Number(location.latitude)},${Number(location.longitude)}&z=15&output=embed`
     : null;
 
   return (
@@ -39,10 +41,19 @@ function LocationPanel({ tree, t, locale }) {
             {[location.state, location.country].filter(Boolean).join(", ")}
             <br />
           </span>
-          {coordinates && (
-            <span className="body-4-regular md:body-3-regular text-text-secondary">
-              {coordinates}
-            </span>
+          {embedUrl && (
+            <div className="pt-3">
+              <div className="aspect-4/3 w-full overflow-hidden rounded-lg">
+                <iframe
+                  title="Location Map"
+                  src={embedUrl}
+                  className="h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
           )}
         </div>
       </div>
