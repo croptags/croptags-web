@@ -64,7 +64,6 @@ function Hero({ tree, t, language, onOpenLanguage }) {
       </button>
       <div className="absolute inset-x-4 bottom-8 text-white sm:inset-x-8">
         <span className="label-2-medium md:label-1-medium mb-2 inline-flex items-center gap-1 rounded-full border border-success-border bg-success-bg px-2.5 py-1 text-success-text">
-          <span className="h-1.5 w-1.5 rounded-full bg-success-solid" />
           {status}
         </span>
         <h1 className="heading-h5-medium sm:heading-h4-medium md:heading-h2-medium md:pb-2.5">
