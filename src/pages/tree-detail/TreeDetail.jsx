@@ -186,88 +186,88 @@ export const TreeDetail = () => {
     );
   }
 
-  const tree = currentTreeState.tree;
+  // const tree = currentTreeState.tree;
 
-  // const tree = {
-  //   id: "CT-2022-008",
-  //   tree_label: "Block B, Row 7, Plot 8",
-  //   farm_name: "Dusun Eco Farm",
-  //   location: {
-  //     mukim: "Mukim Gali",
-  //     district: "Raub",
-  //     state: "Pahang",
-  //     country: "Malaysia",
-  //     latitude: 1.4854,
-  //     longitude: 103.7618,
-  //     altitude_m: 312,
-  //   },
-  //   variety: {
-  //     name: "Musang King",
-  //     code: "D85",
-  //     description:
-  //       "Musang King (Mao Shan Wang) is famous for its luxurious, custard-like texture and complex flavor. It delivers an intense, candy-sweet punch up front, immediately balanced by a deep, lingering, chocolaty bitterness. This rich, buttery profile is accented by subtle hints of almond and spice.",
-  //     taste_profile: {
-  //       sweet: 3,
-  //       bitter: 3,
-  //       creaminess: 3,
-  //       aroma: 3,
-  //       color: "Deep, vibrant turmeric-gold.",
-  //     },
-  //   },
-  //   date_planted: "2010-07-21",
-  //   certification: {
-  //     is_mygap_certified: true,
-  //     cert_no: "myGAP.19.1088/B-5795",
-  //     date_certified: "2012-09-23",
-  //   },
-  //   health: "Healthy",
-  //   activities_log: [
-  //     {
-  //       date: "2022-07-31",
-  //       action_type: "Pesticide",
-  //       product: "ABC Pest",
-  //       by_who: "Ahmad Shukri",
-  //     },
-  //     {
-  //       date: "2022-07-30",
-  //       action_type: "Fungicide",
-  //       product: "Leaf treatment",
-  //       by_who: "Ahmad Shukri",
-  //     },
-  //     {
-  //       date: "2022-07-29",
-  //       action_type: "Pruning",
-  //       product: "",
-  //       by_who: "Ahmad Shukri",
-  //     },
-  //     {
-  //       date: "2022-07-28",
-  //       action_type: "Fertilizer",
-  //       product: "NPK 15-15-15: Cow dung fertilizers",
-  //       by_who: "Ahmad Shukri",
-  //     },
-  //     {
-  //       date: "2022-07-27",
-  //       action_type: "Watering",
-  //       product: "",
-  //       by_who: "Ahmad Shukri",
-  //     },
-  //     {
-  //       date: "2022-07-26",
-  //       action_type: "Attention",
-  //       product: "Inspect leaves for signs of stress",
-  //       by_who: "Ahmad Shukri",
-  //     },
-  //   ],
-  //   harvest_log: [
-  //     { date: "2024-07-31", weight_kg: 160, by_who: "Ahmad Shukri" },
-  //     { date: "2023-07-21", weight_kg: 80, by_who: "Ahmad Shukri" },
-  //     { date: "2022-07-31", weight_kg: 112, by_who: "Ahmad Shukri" },
-  //     { date: "2021-08-02", weight_kg: 96, by_who: "Ahmad Shukri" },
-  //     { date: "2020-07-28", weight_kg: 74, by_who: "Ahmad Shukri" },
-  //     { date: "2019-07-30", weight_kg: 68, by_who: "Ahmad Shukri" },
-  //   ],
-  // };
+  const tree = {
+    id: "CT-2022-008",
+    tree_label: "Block B, Row 7, Plot 8",
+    farm_name: "Dusun Eco Farm",
+    location: {
+      mukim: "Mukim Gali",
+      district: "Raub",
+      state: "Pahang",
+      country: "Malaysia",
+      latitude: 1.4854,
+      longitude: 103.7618,
+      altitude_m: 312,
+    },
+    variety: {
+      name: "Musang King",
+      code: "D85",
+      description:
+        "Musang King (Mao Shan Wang) is famous for its luxurious, custard-like texture and complex flavor. It delivers an intense, candy-sweet punch up front, immediately balanced by a deep, lingering, chocolaty bitterness. This rich, buttery profile is accented by subtle hints of almond and spice.",
+      taste_profile: {
+        sweet: 3,
+        bitter: 3,
+        creaminess: 3,
+        aroma: 3,
+        color: "Deep, vibrant turmeric-gold.",
+      },
+    },
+    date_planted: "2010-07-21",
+    certification: {
+      is_mygap_certified: true,
+      cert_no: "myGAP.19.1088/B-5795",
+      date_certified: "2012-09-23",
+    },
+    health: "Healthy",
+    activities_log: [
+      {
+        date: "2022-07-31",
+        action_type: "Pesticide",
+        product: "ABC Pest",
+        by_who: "Ahmad Shukri",
+      },
+      {
+        date: "2022-07-30",
+        action_type: "Fungicide",
+        product: "Leaf treatment",
+        by_who: "Ahmad Shukri",
+      },
+      {
+        date: "2022-07-29",
+        action_type: "Pruning",
+        product: "",
+        by_who: "Ahmad Shukri",
+      },
+      {
+        date: "2022-07-28",
+        action_type: "Fertilizer",
+        product: "NPK 15-15-15: Cow dung fertilizers",
+        by_who: "Ahmad Shukri",
+      },
+      {
+        date: "2022-07-27",
+        action_type: "Watering",
+        product: "",
+        by_who: "Ahmad Shukri",
+      },
+      {
+        date: "2022-07-26",
+        action_type: "Attention",
+        product: "Inspect leaves for signs of stress",
+        by_who: "Ahmad Shukri",
+      },
+    ],
+    harvest_log: [
+      { date: "2024-07-31", weight_kg: 160, by_who: "Ahmad Shukri" },
+      { date: "2023-07-21", weight_kg: 80, by_who: "Ahmad Shukri" },
+      { date: "2022-07-31", weight_kg: 112, by_who: "Ahmad Shukri" },
+      { date: "2021-08-02", weight_kg: 96, by_who: "Ahmad Shukri" },
+      { date: "2020-07-28", weight_kg: 74, by_who: "Ahmad Shukri" },
+      { date: "2019-07-30", weight_kg: 68, by_who: "Ahmad Shukri" },
+    ],
+  };
 
   return (
     <main className="min-h-dvh bg-gradient-to-b from-[#f4f6f7] to-[#eafff6] pb-8">
