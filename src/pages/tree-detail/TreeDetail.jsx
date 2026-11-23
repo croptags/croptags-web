@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { AnimatePresence, motion } from "motion/react";
 import {
   ChevronDown,
   CircleHelp,
@@ -16,6 +17,27 @@ import { HarvestRecords } from "@/pages/tree-detail/components/HarvestRecords";
 import { LanguagePicker } from "@/pages/tree-detail/components/LanguagePicker";
 import { useI18n } from "@/i18n/useI18n";
 import detailBanner from "@/assets/tree-detail/durian-detail-banner.webp";
+
+const TABS = [
+  ["Overview", "overview"],
+  ["Harvest", "harvest"],
+  ["Care Records", "careRecords"],
+];
+
+const tabPanelVariants = {
+  enter: (direction) => ({
+    opacity: 0,
+    x: direction === 0 ? 0 : direction > 0 ? 24 : -24,
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+  },
+  exit: (direction) => ({
+    opacity: 0,
+    x: direction > 0 ? -24 : 24,
+  }),
+};
 
 async function fetchTreeData(treeId, signal) {
   const response = await fetch(
@@ -47,7 +69,7 @@ function Hero({ tree, t, language, onOpenLanguage }) {
       : t("healthy");
 
   return (
-    <header className="relative isolate h-[284px] overflow-hidden bg-brand sm:h-[340px] lg:h-[400px]">
+    <header className="relative isolate h-71 overflow-hidden bg-brand sm:h-85 lg:h-100">
       <img
         src={detailBanner}
         alt="Durian growing on a tree"
@@ -55,7 +77,7 @@ function Hero({ tree, t, language, onOpenLanguage }) {
         decoding="async"
         className="absolute inset-0 -z-20 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-foreground/0 to-foreground" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-b from-foreground/0 to-foreground" />
       <button
         type="button"
         aria-label={`${t("language")}: ${language === "ms" ? "Malay" : language === "zh" ? "Chinese" : "English"}`}
@@ -109,12 +131,12 @@ function TreeStats({ tree, t }) {
       {stats.map(({ icon: Icon, value, label }) => (
         <div
           key={label}
-          className="flex md:min-h-[110px] min-h-[88px] flex-col items-center justify-center border-r border-border-default px-2 text-center last:border-r-0"
+          className="flex md:min-h-27.5 min-h-22 flex-col items-center justify-center border-r border-border-default px-2 text-center last:border-r-0"
         >
           <Icon
             size={20}
             strokeWidth={1.9}
-            className="mb-2 text-brand md:h-[26px] md:w-[26px]"
+            className="mb-2 text-brand md:h-6.5 md:w-6.5"
           />
           <span className="label-2-medium md:label-1-medium text-text-primary">
             {value}
@@ -132,7 +154,10 @@ export const TreeDetail = () => {
   const { id } = useParams();
   const { t, locale, language, setLanguage } = useI18n();
   const [treeState, setTreeState] = useState(null);
-  const [activeTab, setActiveTab] = useState("Overview");
+  const [tabState, setTabState] = useState({
+    activeTab: "Overview",
+    direction: 0,
+  });
   const [languageOpen, setLanguageOpen] = useState(false);
   const closeLanguagePicker = () => setLanguageOpen(false);
   const selectLanguage = (nextLanguage) => {
@@ -192,88 +217,19 @@ export const TreeDetail = () => {
   }
 
   const tree = currentTreeState.tree;
+  const activeIndex = TABS.findIndex(([tab]) => tab === tabState.activeTab);
 
-  // const tree = {
-  //   id: "CT-2022-008",
-  //   tree_label: "Block B, Row 7, Plot 8",
-  //   farm_name: "Dusun Eco Farm",
-  //   location: {
-  //     mukim: "Mukim Gali",
-  //     district: "Raub",
-  //     state: "Pahang",
-  //     country: "Malaysia",
-  //     latitude: 1.4854,
-  //     longitude: 103.7618,
-  //     altitude_m: 312,
-  //   },
-  //   variety: {
-  //     name: "Musang King",
-  //     code: "D85",
-  //     description:
-  //       "Musang King (Mao Shan Wang) is famous for its luxurious, custard-like texture and complex flavor. It delivers an intense, candy-sweet punch up front, immediately balanced by a deep, lingering, chocolaty bitterness. This rich, buttery profile is accented by subtle hints of almond and spice.",
-  //     taste_profile: {
-  //       sweet: 3,
-  //       bitter: 3,
-  //       creaminess: 3,
-  //       aroma: 3,
-  //       color: "Deep, vibrant turmeric-gold.",
-  //     },
-  //   },
-  //   date_planted: "2010-07-21",
-  //   certification: {
-  //     is_mygap_certified: true,
-  //     cert_no: "myGAP.19.1088/B-5795",
-  //     date_certified: "2012-09-23",
-  //   },
-  //   status: "Healthy",
-  //   activities_log: [
-  //     {
-  //       date: "2022-07-31",
-  //       action_type: "Pesticide",
-  //       product: "Decis",
-  //       by_who: "Lili",
-  //     },
-  //     {
-  //       date: "2022-07-30",
-  //       action_type: "Fungicide",
-  //       product: "Antracol",
-  //       by_who: "Lili",
-  //     },
-  //     {
-  //       date: "2022-07-29",
-  //       action_type: "Pruning",
-  //       by_who: "Lili",
-  //     },
-  //     {
-  //       date: "2022-07-28",
-  //       action_type: "Fertilizer",
-  //       product: "Entec 12/12/17",
-  //       by_who: "Lili",
-  //     },
-  //     {
-  //       date: "2022-07-27",
-  //       action_type: "Watering",
-  //       by_who: "Lili",
-  //     },
-  //     {
-  //       date: "2022-07-26",
-  //       action_type: "Attention",
-  //       description: "Yellow leaves",
-  //       by_who: "Lili",
-  //     },
-  //   ],
-  //   harvest_log: [
-  //     { date: "2024-07-31", weight_kg: 160, by_who: "Lili" },
-  //     { date: "2023-07-21", weight_kg: 80, by_who: "Lili" },
-  //     { date: "2022-07-31", weight_kg: 112, by_who: "Lili" },
-  //     { date: "2021-08-02", weight_kg: 96, by_who: "Lili" },
-  //     { date: "2020-07-28", weight_kg: 74, by_who: "Lili" },
-  //     { date: "2019-07-30", weight_kg: 68, by_who: "Lili" },
-  //   ],
-  // };
+  const handleSelectTab = (nextTab) => {
+    if (nextTab === tabState.activeTab) return;
+    const nextIndex = TABS.findIndex(([tab]) => tab === nextTab);
+    setTabState({
+      activeTab: nextTab,
+      direction: nextIndex > activeIndex ? 1 : -1,
+    });
+  };
 
   return (
-    <main className="min-h-dvh bg-gradient-to-b from-[#f4f6f7] to-[#eafff6] pb-8">
+    <main className="min-h-dvh bg-linear-to-b from-[#f4f6f7] to-[#eafff6] pb-8">
       <Hero
         tree={tree}
         t={t}
@@ -285,49 +241,86 @@ export const TreeDetail = () => {
         <div className="space-y-4 px-4 pt-6 sm:px-6 lg:px-8">
           <nav
             aria-label={t("treeDetails")}
-            className="flex rounded-xl border border-border-default bg-white p-1 sm:p-2"
+            className="relative flex rounded-xl border border-border-default bg-white p-1 sm:p-2"
           >
-            {[
-              ["Overview", t("overview")],
-              ["Harvest", t("harvest")],
-              ["Care Records", t("careRecords")],
-            ].map(([tab, label]) => (
-              <button
-                key={tab}
-                type="button"
-                onClick={() => setActiveTab(tab)}
-                aria-current={activeTab === tab ? "page" : undefined}
-                className={`min-h-10 flex-1 rounded-lg px-1 transition-colors sm:px-2 md:min-h-12 ${activeTab === tab ? "label-2-medium md:label-1-medium bg-brand text-white" : "label-2-regular md:label-1-regular text-text-secondary hover:bg-surface-subtle"}`}
-              >
-                {label}
-              </button>
-            ))}
+            {TABS.map(([tab, translationKey]) => {
+              const isActive = tabState.activeTab === tab;
+
+              return (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => handleSelectTab(tab)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative min-h-10 flex-1 rounded-lg px-1 transition-colors sm:px-2 md:min-h-12 ${
+                    isActive
+                      ? "label-2-medium md:label-1-medium text-white"
+                      : "label-2-regular md:label-1-regular text-text-secondary hover:bg-surface-subtle"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId={`treeDetailActiveTab-${tree.id || id}`}
+                      transition={{
+                        type: "spring",
+                        stiffness: 420,
+                        damping: 32,
+                      }}
+                      className="absolute inset-0 rounded-lg bg-brand"
+                    />
+                  )}
+                  <span className="relative z-10">{t(translationKey)}</span>
+                </button>
+              );
+            })}
           </nav>
-          {activeTab === "Overview" ? (
-            <div className="grid gap-4 lg:grid-cols-2">
-              <TreeOverviewCard tree={tree} t={t} locale={locale} />
-              <div className="space-y-4">
-                <TasteProfile profile={tree.variety?.taste_profile} t={t} />
-                <CertificationCard
-                  certification={tree.certification}
-                  t={t}
-                  locale={locale}
-                />
-              </div>
-            </div>
-          ) : activeTab === "Harvest" ? (
-            <HarvestRecords
-              records={tree.harvest_log || []}
-              t={t}
-              locale={locale}
-            />
-          ) : (
-            <CareRecords
-              records={tree.activities_log || []}
-              t={t}
-              locale={locale}
-            />
-          )}
+
+          <div className="overflow-hidden">
+            <AnimatePresence
+              mode="wait"
+              initial={false}
+              custom={tabState.direction}
+            >
+              <motion.div
+                key={tabState.activeTab}
+                custom={tabState.direction}
+                variants={tabPanelVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                {tabState.activeTab === "Overview" ? (
+                  <div className="grid gap-4 lg:grid-cols-2">
+                    <TreeOverviewCard tree={tree} t={t} locale={locale} />
+                    <div className="space-y-4">
+                      <TasteProfile
+                        profile={tree.variety?.taste_profile}
+                        t={t}
+                      />
+                      <CertificationCard
+                        certification={tree.certification}
+                        t={t}
+                        locale={locale}
+                      />
+                    </div>
+                  </div>
+                ) : tabState.activeTab === "Harvest" ? (
+                  <HarvestRecords
+                    records={tree.harvest_log || []}
+                    t={t}
+                    locale={locale}
+                  />
+                ) : (
+                  <CareRecords
+                    records={tree.activities_log || []}
+                    t={t}
+                    locale={locale}
+                  />
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
       <LanguagePicker
