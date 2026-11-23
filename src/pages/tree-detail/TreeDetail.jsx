@@ -25,17 +25,13 @@ const TABS = [
 ];
 
 const tabPanelVariants = {
-  enter: (direction) => ({
+  inactive: (direction) => ({
     opacity: 0,
-    x: direction === 0 ? 0 : direction > 0 ? 12 : -12,
+    x: direction > 0 ? -24 : 24,
   }),
-  center: {
-    opacity: 1,
-    x: 0,
-  },
-  exit: (direction) => ({
-    opacity: 0,
-    x: direction > 0 ? -12 : 12,
+  active: (direction) => ({
+    opacity: [0, 1],
+    x: [direction === 0 ? 0 : direction > 0 ? 28 : -28, 0],
   }),
 };
 
@@ -252,7 +248,7 @@ export const TreeDetail = () => {
                   type="button"
                   onClick={() => handleSelectTab(tab)}
                   aria-current={isActive ? "page" : undefined}
-                  className={`relative min-h-10 flex-1 rounded-lg px-1 transition-colors sm:px-2 md:min-h-12 ${
+                  className={`relative min-h-10 flex-1 rounded-lg px-1 transition-colors duration-200 sm:px-2 md:min-h-12 ${
                     isActive
                       ? "label-2-medium md:label-1-medium text-white"
                       : "label-2-regular md:label-1-regular text-text-secondary hover:bg-surface-subtle"
@@ -263,9 +259,8 @@ export const TreeDetail = () => {
                       layoutId={`treeDetailActiveTab-${tree.id || id}`}
                       transition={{
                         type: "spring",
-                        stiffness: 320,
-                        damping: 34,
-                        mass: 0.9,
+                        stiffness: 260,
+                        damping: 28,
                       }}
                       className="absolute inset-0 rounded-lg bg-brand will-change-transform"
                     />
@@ -278,12 +273,13 @@ export const TreeDetail = () => {
 
           <div className="overflow-hidden">
             <motion.div
-              key="Overview"
               custom={tabState.direction}
               variants={tabPanelVariants}
               initial={false}
-              animate={tabState.activeTab === "Overview" ? "center" : "exit"}
-              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              animate={
+                tabState.activeTab === "Overview" ? "active" : "inactive"
+              }
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className={tabState.activeTab === "Overview" ? "block" : "hidden"}
             >
               <div className="grid gap-4 lg:grid-cols-2">
@@ -300,12 +296,11 @@ export const TreeDetail = () => {
             </motion.div>
 
             <motion.div
-              key="Harvest"
               custom={tabState.direction}
               variants={tabPanelVariants}
               initial={false}
-              animate={tabState.activeTab === "Harvest" ? "center" : "exit"}
-              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              animate={tabState.activeTab === "Harvest" ? "active" : "inactive"}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className={tabState.activeTab === "Harvest" ? "block" : "hidden"}
             >
               <HarvestRecords
@@ -316,14 +311,13 @@ export const TreeDetail = () => {
             </motion.div>
 
             <motion.div
-              key="Care Records"
               custom={tabState.direction}
               variants={tabPanelVariants}
               initial={false}
               animate={
-                tabState.activeTab === "Care Records" ? "center" : "exit"
+                tabState.activeTab === "Care Records" ? "active" : "inactive"
               }
-              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className={
                 tabState.activeTab === "Care Records" ? "block" : "hidden"
               }
