@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import {
   ChevronDown,
   CircleHelp,
@@ -27,7 +27,7 @@ const TABS = [
 const tabPanelVariants = {
   enter: (direction) => ({
     opacity: 0,
-    x: direction === 0 ? 0 : direction > 0 ? 24 : -24,
+    x: direction === 0 ? 0 : direction > 0 ? 12 : -12,
   }),
   center: {
     opacity: 1,
@@ -35,7 +35,7 @@ const tabPanelVariants = {
   },
   exit: (direction) => ({
     opacity: 0,
-    x: direction > 0 ? -24 : 24,
+    x: direction > 0 ? -12 : 12,
   }),
 };
 
@@ -263,10 +263,11 @@ export const TreeDetail = () => {
                       layoutId={`treeDetailActiveTab-${tree.id || id}`}
                       transition={{
                         type: "spring",
-                        stiffness: 420,
-                        damping: 32,
+                        stiffness: 320,
+                        damping: 34,
+                        mass: 0.9,
                       }}
-                      className="absolute inset-0 rounded-lg bg-brand"
+                      className="absolute inset-0 rounded-lg bg-brand will-change-transform"
                     />
                   )}
                   <span className="relative z-10">{t(translationKey)}</span>
@@ -276,50 +277,63 @@ export const TreeDetail = () => {
           </nav>
 
           <div className="overflow-hidden">
-            <AnimatePresence
-              mode="wait"
-              initial={false}
+            <motion.div
+              key="Overview"
               custom={tabState.direction}
+              variants={tabPanelVariants}
+              initial={false}
+              animate={tabState.activeTab === "Overview" ? "center" : "exit"}
+              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              className={tabState.activeTab === "Overview" ? "block" : "hidden"}
             >
-              <motion.div
-                key={tabState.activeTab}
-                custom={tabState.direction}
-                variants={tabPanelVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ duration: 0.2, ease: "easeOut" }}
-              >
-                {tabState.activeTab === "Overview" ? (
-                  <div className="grid gap-4 lg:grid-cols-2">
-                    <TreeOverviewCard tree={tree} t={t} locale={locale} />
-                    <div className="space-y-4">
-                      <TasteProfile
-                        profile={tree.variety?.taste_profile}
-                        t={t}
-                      />
-                      <CertificationCard
-                        certification={tree.certification}
-                        t={t}
-                        locale={locale}
-                      />
-                    </div>
-                  </div>
-                ) : tabState.activeTab === "Harvest" ? (
-                  <HarvestRecords
-                    records={tree.harvest_log || []}
+              <div className="grid gap-4 lg:grid-cols-2">
+                <TreeOverviewCard tree={tree} t={t} locale={locale} />
+                <div className="space-y-4">
+                  <TasteProfile profile={tree.variety?.taste_profile} t={t} />
+                  <CertificationCard
+                    certification={tree.certification}
                     t={t}
                     locale={locale}
                   />
-                ) : (
-                  <CareRecords
-                    records={tree.activities_log || []}
-                    t={t}
-                    locale={locale}
-                  />
-                )}
-              </motion.div>
-            </AnimatePresence>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              key="Harvest"
+              custom={tabState.direction}
+              variants={tabPanelVariants}
+              initial={false}
+              animate={tabState.activeTab === "Harvest" ? "center" : "exit"}
+              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              className={tabState.activeTab === "Harvest" ? "block" : "hidden"}
+            >
+              <HarvestRecords
+                records={tree.harvest_log || []}
+                t={t}
+                locale={locale}
+              />
+            </motion.div>
+
+            <motion.div
+              key="Care Records"
+              custom={tabState.direction}
+              variants={tabPanelVariants}
+              initial={false}
+              animate={
+                tabState.activeTab === "Care Records" ? "center" : "exit"
+              }
+              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              className={
+                tabState.activeTab === "Care Records" ? "block" : "hidden"
+              }
+            >
+              <CareRecords
+                records={tree.activities_log || []}
+                t={t}
+                locale={locale}
+              />
+            </motion.div>
           </div>
         </div>
       </div>
