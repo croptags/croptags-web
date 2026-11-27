@@ -10,7 +10,7 @@ const translations = {
     mygapDescription: "myGAP is a Malaysian certification that ensures farms follow safe, sustainable, and quality agricultural practices.",
     records: "Records", noRecords: "No records just yet!", noRecordsDescription: "The farmer will plant & update soon, stay tuned!", viewMore: "View more", viewLess: "View less",
     noFruits: "No fruits just yet!", noFruitsDescription: "It's still a little sapling growing, stretching, and dreaming of harvest day.",
-    fertilizer: "Fertilizer", attention: "Attention", pruning: "Pruning", pesticide: "Pesticide", fungicide: "Fungicide", watering: "Watering",
+    fertiliser: "Fertiliser", fertilizer: "Fertiliser", pesticide: "Pesticide", fungicide: "Fungicide", foliar: "Foliar", soilDrenching: "Soil Drenching", watering: "Watering", pruning: "Pruning", needsAttention: "Needs Attention", attention: "Needs Attention", markHealthy: "Mark Healthy",
     farm: "Farm", noDescription: "No description available.", denseTexture: "Dense, velvety, and smooth, melting in the mouth like rich butter or custard.",
   },
   ms: {
@@ -21,7 +21,7 @@ const translations = {
     mygapDescription: "myGAP ialah pensijilan Malaysia yang memastikan ladang mengamalkan pertanian yang selamat, mampan dan berkualiti.",
     records: "Rekod", noRecords: "Belum ada rekod!", noRecordsDescription: "Petani akan menanam dan mengemas kini tidak lama lagi. Nantikan!", viewMore: "Lihat lagi", viewLess: "Lihat kurang",
     noFruits: "Belum ada buah!", noFruitsDescription: "Pokok kecil ini sedang membesar dan menanti hari tuaian.",
-    fertilizer: "Baja", attention: "Perhatian", pruning: "Pemangkasan", pesticide: "Racun Perosak", fungicide: "Racun Kulat", watering: "Penyiraman",
+    fertiliser: "Baja", fertilizer: "Baja", pesticide: "Racun Perosak", fungicide: "Racun Kulat", foliar: "Semburan Daun", soilDrenching: "Siraman Tanah", watering: "Penyiraman", pruning: "Pemangkasan", needsAttention: "Perlu Perhatian", attention: "Perlu Perhatian", markHealthy: "Pulih Sihat",
     farm: "Ladang", noDescription: "Tiada penerangan tersedia.", denseTexture: "Padat, lembut dan licin, cair di dalam mulut seperti mentega atau kastard.",
   },
   zh: {
@@ -32,7 +32,7 @@ const translations = {
     mygapDescription: "myGAP 是马来西亚认证，确保农场遵循安全、可持续且优质的农业实践。",
     records: "记录", noRecords: "目前还没有记录！", noRecordsDescription: "农户很快会种植并更新记录，敬请期待！", viewMore: "查看更多", viewLess: "收起",
     noFruits: "目前还没有果实！", noFruitsDescription: "小树苗正在生长，期待收获的日子。",
-    fertilizer: "施肥", attention: "注意事项", pruning: "修剪", pesticide: "杀虫剂", fungicide: "杀菌剂", watering: "浇水",
+    fertiliser: "施肥", fertilizer: "施肥", pesticide: "杀虫剂", fungicide: "杀菌剂", foliar: "叶面肥", soilDrenching: "灌根", watering: "浇水", pruning: "修剪", needsAttention: "需要关注", attention: "需要关注", markHealthy: "恢复健康",
     farm: "农场", noDescription: "暂无简介。", denseTexture: "果肉浓郁细腻、柔滑，入口如奶油或卡仕达般绵密。",
   },
 };
