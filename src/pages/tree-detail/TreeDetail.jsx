@@ -59,10 +59,18 @@ function getTreeAge(value) {
 }
 
 function Hero({ tree, t, language, onOpenLanguage }) {
-  const status =
-    typeof tree.status === "string" && tree.status.toLowerCase() !== "healthy"
-      ? tree.status
-      : t("healthy");
+  const rawStatus = typeof tree.status === "string" ? tree.status.trim() : "";
+  const normalizedStatus = rawStatus.toLowerCase().replace(/[ _-]+/g, "");
+  const isHealthy = !normalizedStatus || normalizedStatus === "healthy";
+  const isAttention = normalizedStatus.includes("attention");
+  const status = isHealthy
+    ? t("healthy")
+    : isAttention
+      ? t("needsAttention")
+      : rawStatus;
+  const statusBadgeClass = isHealthy
+    ? "border-success-border bg-success-bg text-success-text"
+    : "border-amber-300 bg-amber-50 text-amber-800";
 
   return (
     <header className="relative isolate h-71 overflow-hidden bg-brand sm:h-85 lg:h-100">
@@ -83,7 +91,9 @@ function Hero({ tree, t, language, onOpenLanguage }) {
         {language.toUpperCase()} <ChevronDown size={16} />
       </button>
       <div className="absolute inset-x-4 bottom-8 text-white sm:inset-x-8">
-        <span className="label-2-medium md:label-1-medium mb-2 inline-flex items-center gap-1 rounded-full border border-success-border bg-success-bg px-2.5 py-1 text-success-text">
+        <span
+          className={`label-2-medium md:label-1-medium mb-2 inline-flex items-center gap-1 rounded-full border px-2.5 py-1 ${statusBadgeClass}`}
+        >
           {status}
         </span>
         <h1 className="heading-h5-medium sm:heading-h4-medium md:heading-h2-medium md:pb-2.5">
