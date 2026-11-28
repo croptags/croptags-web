@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Globe, Smartphone } from "lucide-react";
 import logo from "@/assets/logo.svg";
-import { CHANGELOG_RELEASES } from "@/data/changelog";
+import { parseChangelog } from "@/utils/parseChangelog";
+import changelogMarkdown from "../../../CHANGELOG.md?raw";
 
+const CHANGELOG_RELEASES = parseChangelog(changelogMarkdown);
 const CATEGORY_FILTERS = ["All", "Mobile app", "Consumer web"];
 
 function CategoryIcon({ category }) {
@@ -134,12 +136,14 @@ export function Changelog() {
                       </span>
                     )}
                   </div>
-                  <time
-                    dateTime={release.date}
-                    className="body-3-regular text-text-secondary"
-                  >
-                    {release.date}
-                  </time>
+                  {release.date && (
+                    <time
+                      dateTime={release.date}
+                      className="body-3-regular text-text-secondary"
+                    >
+                      {release.date}
+                    </time>
+                  )}
                 </div>
 
                 <div className="divide-y divide-border-default">
@@ -157,10 +161,12 @@ export function Changelog() {
 
                       <div className="space-y-5">
                         {section.groups.map((group) => (
-                          <div key={group.title}>
-                            <h4 className="mb-2 text-xs font-semibold tracking-wide text-text-secondary uppercase">
-                              {group.title}
-                            </h4>
+                          <div key={group.title || section.category}>
+                            {group.title && (
+                              <h4 className="mb-2 text-xs font-semibold tracking-wide text-text-secondary uppercase">
+                                {group.title}
+                              </h4>
+                            )}
                             <ul className="space-y-2">
                               {group.items.map((item) => (
                                 <li
