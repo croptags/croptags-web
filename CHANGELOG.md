@@ -2,6 +2,21 @@
 
 Updates across the CropTags mobile app and consumer tree page.
 
+## v1.3a
+
+Released on 2026-11-29.
+
+### Mobile app
+
+#### Yield chart and large orchard support
+
+- The Yield chart groups harvests by day for 7 days, by week for 30 and 90 days, and by month for 1 year and All time.
+- Users can switch the Yield chart between stacked bars and multi-variety lines.
+- Tapping any bar or time point on the Yield chart shows the date period, total fruit count, and breakdown by variety.
+- Farms with more than five harvested varieties show the top five varieties individually and group the rest under Others.
+- Large harvest totals use compact thousand labels on the chart axis and comma-separated numbers on summary cards.
+- The Tree Directory, tree group selector, and maintenance log tree picker now load up to 2,500 trees per farm.
+
 ## v1.3
 
 Released on 2026-11-28.
