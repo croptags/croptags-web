@@ -70,7 +70,7 @@ function Hero({ tree, t, language, onOpenLanguage }) {
       : rawStatus;
   const statusBadgeClass = isHealthy
     ? "border-success-border bg-success-bg text-success-text"
-    : "border-amber-300 bg-amber-50 text-amber-800";
+    : "border-yellow-400 bg-yellow-100 text-yellow-900";
 
   return (
     <header className="relative isolate h-71 overflow-hidden bg-brand sm:h-85 lg:h-100">
