@@ -33,6 +33,7 @@ Released on 2026-11-28.
 - Every tree card in the Trees tab shows a green Healthy badge or a yellow Needs Attention badge.
 - Custom group creation, editing, and deletion live inside the Trees group filter dropdown. The Trees header removes the top-right Groups button.
 - Varieties on the Yield tab act as checkboxes. Unticking a variety hides it from the chart, total harvest count, and recent bindings list.
+- Variety dropdowns include all 162 Department of Agriculture registered durian clones with commercial varieties listed first and a built-in search bar.
 
 ### Consumer web
 
@@ -42,6 +43,7 @@ Released on 2026-11-28.
 - Harvest logs group bound fruits by day and show fruit quantity with the durian icon instead of weight in kilograms.
 - The tree detail header shows a green Healthy badge or a yellow Needs Attention badge based on tree status.
 - Labels and translations use Fertilizer and Foliar Fertilizer, show water volume when recorded, and use the updated care icons.
+- The taste profile card renders half-star ratings and hides empty star rows when a heritage clone has no published sensory scores.
 
 ## v1.2
 
