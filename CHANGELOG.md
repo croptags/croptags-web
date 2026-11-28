@@ -15,6 +15,7 @@ Released on 2026-11-29.
 - Tapping any bar or time point on the Yield chart shows the date period, total fruit count, and breakdown by variety.
 - Farms with more than five harvested varieties show the top five varieties individually and group the rest under Others.
 - Large harvest totals use compact thousand labels on the chart axis and comma-separated numbers on summary cards.
+- Recent bindings on the Yield tab group scanned fruits by tree and harvest date. Users can tap a row to see individual sticker codes or open the tree page, and tap Show more to load older batches.
 - The Tree Directory, tree group selector, and maintenance log tree picker now load up to 2,500 trees per farm.
 
 ## v1.3
